@@ -127,34 +127,6 @@ namespace PlayListManager
 			m_Listener.NewPlayListUploaded(CreatePlayList(playList));
 		}
 
-		//public void UploadNewPlayList(string newName)
-		//{
-		//    var request = new RestRequest
-		//    {
-		//        Resource = "playlists.xml",
-		//        RootElement = "playlist",
-		//        XmlNamespace = "",
-		//        RequestFormat = DataFormat.Xml,
-		//        Method = Method.POST
-		//    };
-		//    request.AddBody(new playlist { name = newName });
-		//    m_Client.ExecuteAsync(request, OnEndUploadNewPlaylist);
-		//}
-
-		//private void OnEndUploadNewPlaylist(RestResponse response)
-		//{
-		//    if (response.StatusCode != System.Net.HttpStatusCode.Created)
-		//    {
-		//        m_Listener.Error(response.StatusCode, response.StatusDescription, response.Content, null);
-		//        return;
-		//    }
-
-		//    var deserializer = new XmlDeserializer { Namespace = "", RootElement = "" };
-		//    var playList = deserializer.Deserialize<playlist>(response);
-
-		//    m_Listener.NewPlayListUploaded(CreatePlayList(playList));
-		//}
-
 		private PlayList CreatePlayList(playlist playList)
 		{
 			return new PlayList(new PlayListContent(playList.id, playList.name, playList.images.Select(CreatePlayListItem).ToArray()), this);
@@ -164,46 +136,6 @@ namespace PlayListManager
 		{
 			return new PlayListItem(new ImageId(img.id), img.name);
 		}
-
-		//public void DeletePlayList(int id)
-		//{
-		//    var request = new RestRequest
-		//    {
-		//        Resource = "playlists/{id}.xml",
-		//        RootElement = "",
-		//        XmlNamespace = "",
-		//        RequestFormat = DataFormat.Xml,
-		//        Method = Method.DELETE,
-		//    };
-		//    request.AddParameter("id", id, ParameterType.UrlSegment);
-		//    m_Client.ExecuteAsync(request, response => OnEndDeletePlayList(response, id));
-		//}
-
-		//private void OnEndDeletePlayList(RestResponse response, int id)
-		//{
-		//    if (response.StatusCode != System.Net.HttpStatusCode.OK)
-		//    {
-		//        m_Listener.Error(response.StatusCode, response.StatusDescription, response.Content, null);
-		//        return;
-		//    }
-
-		//    m_Listener.PlayListDeleted(id);
-		//}
-
-		//public void UploadModifiedPlayList(PlayList playlist)
-		//{
-		//    var request = new RestRequest
-		//    {
-		//        Resource = "playlists/{id}.xml",
-		//        RootElement = "",
-		//        XmlNamespace = "",
-		//        RequestFormat = DataFormat.Xml,
-		//        Method = Method.PUT,
-		//    };
-		//    request.AddParameter("id", playlist.Id, ParameterType.UrlSegment);
-		//    request.AddBody(CreateXmlPlayListFrom(playlist));
-		//    m_Client.ExecuteAsync(request, response => OnEndSaveModifiedPlayList(response, playlist));
-		//}
 
 		private static playlist CreateXmlPlayListFrom(PlayListContent playlist)
 		{
@@ -222,9 +154,6 @@ namespace PlayListManager
 				m_Listener.Error(CreateErrorDescription(response));
 				return;
 			}
-
-			//m_Listener.ModifiedPlayListUploaded(playlist);
 		}
-
 	}
 }

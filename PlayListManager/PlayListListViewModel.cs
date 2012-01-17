@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace PlayListManager
 {
-	public class PlayListLisvViewModel : ArchiveComboModelListener, PlayListListener
+	public class PlayListListViewModel : ArchiveComboModelListener, PlayListListener
 	{
 		private readonly ListView m_ListView;
 		private PlayList m_SelectedPlayList;
 
-		public PlayListLisvViewModel(ListView listView)
+		public PlayListListViewModel(ListView listView)
 		{
 			m_ListView = listView;
 		}

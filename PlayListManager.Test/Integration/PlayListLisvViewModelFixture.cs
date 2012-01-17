@@ -9,7 +9,7 @@ namespace PlayListManager.Test.Integration
 	{
 		private Form m_Form;
 		private ListView m_ListViewPlayList;
-		private PlayListLisvViewModel m_Model;
+		private PlayListListViewModel m_Model;
 
 		[SetUp]
 		public void Initialize()
@@ -17,7 +17,7 @@ namespace PlayListManager.Test.Integration
 			m_Form = new Form();
 			m_ListViewPlayList = new ListView();
 			m_Form.Controls.Add(m_ListViewPlayList);
-			m_Model = new PlayListLisvViewModel(m_ListViewPlayList);
+			m_Model = new PlayListListViewModel(m_ListViewPlayList);
 		}
 
 		[TearDown]
